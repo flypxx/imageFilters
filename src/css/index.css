@@ -1,0 +1,36 @@
+.page {
+  width: 100%;
+}
+.header {
+  line-height: 44px;
+  height: 44px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  background-color: #5e35b1;
+}
+.container {
+  width: 100%;
+  text-align: center;
+}
+.canvas-wrapper {
+  padding: 15px 0;
+  width: 100%;
+  max-width: 600px;
+}
+.canvas {
+  width: 320px;
+  height: 384px;
+  margin: 0 auto;
+  box-shadow: 3px 3px 10px rgba(3, 3, 3, .2);
+}
+.picture-selector {
+  width: 56%;
+  text-align: center;
+  margin: 0 auto;
+  height: 44px;
+  line-height: 44px;
+  border-radius: 22px;
+  background-color: #5e35b1;
+  color: #fff;
+}
