@@ -25,15 +25,19 @@
       </div>
       <div class="controller">
         <div class="opreate-option">
-          <div class="picture-selector">选择图片</div>
+          <div class="picture-selector" id="selectBtn">选择图片</div>
           <div class="picture-save">保存图片</div>
         </div>
         <div class="text">
           <textarea class="text-area" placeholder="说点什么..."></textarea>
         </div>
       </div>
+      <div class="hide-eles" style="display:none;">
+        <input type="file" id="imageFile">
+        <img src="javascript:;" class="image" id="imageEle">
+      </div>
     </div>
   </div>
-  <script type="text/ecmascript-6" src="../js/index.js"></script>
+  <script type="text/javascript" src="../js/index.js"></script>
 </body>
 </html>
