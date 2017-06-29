@@ -1,5 +1,6 @@
 .page {
   width: 100%;
+  overflow: hidden;
 }
 .header {
   line-height: 44px;
@@ -24,13 +25,36 @@
   margin: 0 auto;
   box-shadow: 3px 3px 10px rgba(3, 3, 3, .2);
 }
-.picture-selector {
-  width: 56%;
+.opreate-option {
+  display: flex;
+  height: 40px;
+  width: 100%;
   text-align: center;
+}
+.picture-selector, .picture-save {
+  flex: 0 0 50%;
   margin: 0 auto;
-  height: 44px;
-  line-height: 44px;
-  border-radius: 22px;
+  max-width: 140px;
+  line-height: 40px;
+  height: 40px;
+  border-radius: 20px;
   background-color: #5e35b1;
   color: #fff;
+  font-size: 14px;
+}
+.controller .text {
+  margin: 15px auto;
+  padding: 10px;
+  width: 320px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid rgba(7, 17, 27,.1);
+}
+.text-area {
+  display: block;
+  padding: 0;
+  width: 100%;
+  height: 120px;
+  border: 0;
 }
