@@ -2,6 +2,11 @@ let page = {
   init: function() {
     console.log(123)
     this.eventInit()
+    this.drawSignature()
+  },
+  drawSignature: function() {
+    let newImg = new Image()
+    console.log('sign')
   },
   eventInit: function() {
     document.querySelector('#selectBtn').addEventListener('click', function() {
@@ -9,6 +14,7 @@ let page = {
     })
     document.querySelector('#imageFile').addEventListener('change', this.setImage)
     document.querySelector('#imageEle').addEventListener('load', this.drawImage)
+    document.querySelector('#beautyWords').addEventListener('blur', this.setText)
   },
   drawImage: function() {
     let canvas = document.querySelector('#magicPicture')
@@ -63,6 +69,23 @@ let page = {
         document.querySelector('#imageEle').src = this.result
       }
       reader.readAsDataURL(file)
+    }
+  },
+  setText: function() {
+    let text = this.value
+    let canvas = document.querySelector('#magicPicture')
+    if (canvas.getContext) {
+      const right = 304
+      const top = 209
+      let context = canvas.getContext('2d')
+      context.textAlign = 'right'
+      context.font = 'normal normal normal 12px'
+      let textArr = text.split('\n')
+      textArr = textArr.length > 4 ? textArr.slice(0, 4) : textArr
+      context.clearRect(5, 197, 315, 305)
+      for (let i = 0, len = textArr.length; i < len; i++) {
+        context.fillText(textArr[i], right, top + i * 24)
+      }
     }
   }
 }
