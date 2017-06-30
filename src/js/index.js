@@ -1,7 +1,7 @@
 let page = {
   init: function() {
     this.eventInit()
-    this.drawSignature()
+    // this.drawSignature()
     this.drawQrcode()
   },
   drawQrcode() {
@@ -26,19 +26,19 @@ let page = {
       context.putImageData(qrcodeData, 245, 310, 0, 0, 60, 60)
     }
   },
-  drawSignature: function() {
-    const imageLen = 4
-    let newImg = new Image()
-    let num = parseInt(Math.random() * imageLen)
-    newImg.src = `./name${num}.png`;
-    let canvas = document.querySelector('#magicPicture')
-    if (canvas.getContext) {
-      let context = canvas.getContext('2d')
-      newImg.onload = function() {
-        context.drawImage(newImg, 15, 310, 60, 60)
-      }
-    }
-  },
+  // drawSignature: function() {
+  //   const imageLen = 4
+  //   let newImg = new Image()
+  //   let num = parseInt(Math.random() * imageLen)
+  //   newImg.src = `../img/name${num}.png`;
+  //   let canvas = document.querySelector('#magicPicture')
+  //   if (canvas.getContext) {
+  //     let context = canvas.getContext('2d')
+  //     newImg.onload = function() {
+  //       context.drawImage(newImg, 15, 310, 60, 60)
+  //     }
+  //   }
+  // },
   eventInit: function() {
     document.querySelector('#selectBtn').addEventListener('click', function() {
       document.querySelector('#imageFile').click()
