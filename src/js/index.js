@@ -5,7 +5,6 @@ let page = {
     this.drawQrcode()
   },
   drawQrcode() {
-
     let qrcode = document.querySelector('#qrcodeEle').children
     if (qrcode.length) {
       document.querySelector('#qrcodeEle').removeChild(qrcode[0])
@@ -31,7 +30,7 @@ let page = {
     const imageLen = 4
     let newImg = new Image()
     let num = parseInt(Math.random() * imageLen)
-    newImg.src = `../img/name${num}.png`;
+    newImg.src = `./name${num}.png`;
     let canvas = document.querySelector('#magicPicture')
     if (canvas.getContext) {
       let context = canvas.getContext('2d')
@@ -47,6 +46,7 @@ let page = {
     document.querySelector('#imageFile').addEventListener('change', this.setImage)
     document.querySelector('#imageEle').addEventListener('load', this.drawImage)
     document.querySelector('#beautyWords').addEventListener('blur', this.setText)
+    document.querySelector('#saveBtn').addEventListener('click', this.saveImage)
   },
   drawImage: function() {
     let canvas = document.querySelector('#magicPicture')
@@ -83,12 +83,30 @@ let page = {
       }
     }
   },
+  saveImage: function() {
+    let myCanvas = document.querySelector('#magicPicture')
+    let imageData = myCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream;Content-Disposition: attachment;filename=foobar.png")
+    /**
+     * 在本地进行文件保存
+     * @param  {String} data     要保存到本地的图片数据
+     * @param  {String} filename 文件名
+     */
+    let saveFile = function(data, filename) {
+      let save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a')
+      save_link.href = data
+      save_link.download = filename
+      let event = document.createEvent('MouseEvents')
+      event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+      save_link.dispatchEvent(event)
+    }
+    saveFile(imageData, 'magic-picture.png')
+  },
   setImage: function() {
     // 读取图片
     console.log(this.files)
     var file = this.files[0]
-    var fileName = file.name;
-    var fileSize = file.size;
+    var fileName = file.name
+    var fileSize = file.size
     if (!/image\/\w+/.test(file.type)) {
       console.log('只允许选择图片')
       return
