@@ -1,8 +1,16 @@
 let page = {
   init: function() {
+    this.clearRect()
     this.eventInit()
     // this.drawSignature()
     this.drawQrcode()
+  },
+  clearRect() {
+    let canvas = document.querySelector('#magicPicture')
+    if (canvas.getContext) {
+      let context = canvas.getContext('2d')
+      context.clearRect(0, 0, canvas.width, canvas.height)
+    }
   },
   drawQrcode() {
     let qrcode = document.querySelector('#qrcodeEle').children
