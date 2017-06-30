@@ -5,8 +5,17 @@ let page = {
     this.drawSignature()
   },
   drawSignature: function() {
+    const imageLen = 4
     let newImg = new Image()
-    console.log('sign')
+    let num = parseInt(Math.random() * imageLen)
+    newImg.src = `../img/name${num}.png`;
+    let canvas = document.querySelector('#magicPicture')
+    if (canvas.getContext) {
+      let context = canvas.getContext('2d')
+      newImg.onload = function() {
+        context.drawImage(newImg, 15, 310, 60, 60)
+      }
+    }
   },
   eventInit: function() {
     document.querySelector('#selectBtn').addEventListener('click', function() {
