@@ -1,8 +1,31 @@
 let page = {
   init: function() {
-    console.log(123)
     this.eventInit()
     this.drawSignature()
+    this.drawQrcode()
+  },
+  drawQrcode() {
+
+    let qrcode = document.querySelector('#qrcodeEle').children
+    if (qrcode.length) {
+      document.querySelector('#qrcodeEle').removeChild(qrcode[0])
+    }
+    $('#qrcodeEle').qrcode({
+      render: 'canvas',
+      text: '我本应该是一个正经的二维码',
+      width: 60,
+      height: 60,
+      background: '#fff',
+      foreground: '#000'
+    })
+    let canvas = document.querySelector('#magicPicture')
+    if (canvas.getContext) {
+      let context = canvas.getContext('2d')
+      let qrcodeCvs = document.querySelector('#qrcodeEle').children[0]
+      let ctx = qrcodeCvs.getContext('2d')
+      let qrcodeData = ctx.getImageData(0, 0, 60, 60)
+      context.putImageData(qrcodeData, 245, 310, 0, 0, 60, 60)
+    }
   },
   drawSignature: function() {
     const imageLen = 4
@@ -91,7 +114,7 @@ let page = {
       context.font = 'normal normal normal 12px'
       let textArr = text.split('\n')
       textArr = textArr.length > 4 ? textArr.slice(0, 4) : textArr
-      context.clearRect(5, 197, 315, 305)
+      context.clearRect(5, 197, 310, 96)
       for (let i = 0, len = textArr.length; i < len; i++) {
         context.fillText(textArr[i], right, top + i * 24)
       }
