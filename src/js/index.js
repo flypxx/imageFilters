@@ -141,7 +141,9 @@ let page = {
       context.font = 'normal normal normal 12px'
       let textArr = text.split('\n')
       textArr = textArr.length > 4 ? textArr.slice(0, 4) : textArr
-      context.clearRect(5, 197, 310, 96)
+      context.fillStyle = '#fff'
+      context.fillRect(5, 197, 310, 96)
+      context.fillStyle = '#000'
       for (let i = 0, len = textArr.length; i < len; i++) {
         context.fillText(textArr[i], right, top + i * 24)
       }
